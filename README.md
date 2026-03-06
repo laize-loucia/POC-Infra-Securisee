@@ -1,7 +1,7 @@
 # Projet 
 
 
-## Arborescence des fichiers
+# Arborescence
 poc-infra-lab
 docker-compose.yml
 README.md

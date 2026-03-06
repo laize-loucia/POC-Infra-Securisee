@@ -1,6 +1,17 @@
 # Projet 
 
 
+
+lab Docker = un environnement réaliste d’infrastructure, où lusiseurs services différents tournent dans des conteneurs différents.
+
+Le projet permet d'obtenir une mini-infra virtuelle pour essayer de reproduire une petite entreprise.
+
+Les conteneurs sont sur des réseaux différents (DMZ vs Internal).
+
+On peut tester la communication entre eux, la segmentation, le scan Nmap, etc.
+
+
+
 # Arborescence
 poc-infra-lab
 docker-compose.yml
@@ -21,6 +32,7 @@ Ensuite Docker Compose lit ce fichier et lance tout automatiquement.
 
 ### ajout des services 
 
+NGINX pour le web, OpenLDAP pour l’authentification
 
 
 

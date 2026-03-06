@@ -24,7 +24,7 @@ Ensuite Docker Compose lit ce fichier et lance tout automatiquement.
 
 
 
-### commandes de base
+## Commandes de base
 ```
 sudo apt install docker-compose
 ```
@@ -78,7 +78,7 @@ docker exec -it celtak_ubuntu bash
 
 
 
-### NGINX et OpenLDAP 
+# NGINX et OpenLDAP 
 
 services qui tournent en continu
 

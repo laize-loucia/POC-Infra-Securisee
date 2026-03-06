@@ -5,4 +5,6 @@ services: #represente une image
    my_ubuntu:
     image: celtak/ubuntu-ping-ip
     container_name: celtak_ubuntu
-#Le conteneur  my_ubuntu est lance, l'image utilisée etle nom du conteneur
+    stdin_open: true
+    tty: true
+# Le conteneur my_ubuntu est lancé, l'image utilisée et le nom du conteneur

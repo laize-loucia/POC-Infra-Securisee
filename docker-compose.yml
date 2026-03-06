@@ -5,6 +5,35 @@ services: #represente une image
    my_ubuntu:
     image: celtak/ubuntu-ping-ip
     container_name: celtak_ubuntu
-    stdin_open: true
-    tty: true
+    stdin_open: true   # permet l'interaction
+    tty: true          # garde le conteneur vivant
+  # Serveur web exposé dans DMZ
+   web:
+    image: nginx:alpine
+    container_name: web_server
+    ports:
+      - "8080:80"   # exposé sur le port localhost:8080
+    networks:
+      - dmz_net
+
+  ldap:
+    image: osixia/openldap:1.5.0
+    container_name: ldap_server
+    environment:
+      LDAP_ORGANISATION: "Lab"
+      LDAP_DOMAIN: "lab.local"
+      LDAP_ADMIN_PASSWORD: "admin"
+    networks:
+      - internal_net
+    restart: always
+
+networks:
+  dmz_net:
+    driver: bridge
+
+  internal_net:
+    driver: bridge
+
 # Le conteneur my_ubuntu est lancé, l'image utilisée et le nom du conteneur
+
+

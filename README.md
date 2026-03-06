@@ -14,9 +14,17 @@ quels conteneurs lancer, quelles images utiliser, quels réseaux, quels ports, e
 Ensuite Docker Compose lit ce fichier et lance tout automatiquement.
 
 
-## Docker compose 
+# Docker compose 
 
 
+## Redaction du YAML
+
+### ajout des services 
+
+
+
+
+### commandes de base
 ```
 sudo apt install docker-compose
 ```
@@ -24,7 +32,8 @@ sudo apt install docker-compose
 ```
 docker compose up
 ```
-Ca permet de 
+
+A partir du fuchier yaml ca permet de 
 - téléchargé l’image
 - créé un réseau
 - créé le conteneur
@@ -51,6 +60,14 @@ Pour l'afficher il faut ensuite faire:
 docker run -it --name celtak_ubuntu ubuntu:22.04 bash
 ```
 
+ou modifier le fichier yaml
+
+
+Vérifier que le conteneur ubunutu de test apparait actif
+```
+docker compose up -d
+```
+
 
 
 
@@ -59,6 +76,11 @@ ENtrer dans le conteneur
 docker exec -it celtak_ubuntu bash
 ```
 
+
+
+### NGINX et OpenLDAP 
+
+services qui tournent en continu
 
 
 

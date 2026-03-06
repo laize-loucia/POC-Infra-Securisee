@@ -21,8 +21,6 @@ Ensuite Docker Compose lit ce fichier et lance tout automatiquement.
 sudo apt install docker-compose
 ```
 
-
-
 ```
 docker compose up
 ```
@@ -34,12 +32,33 @@ Ca permet de
 
 
 
-Afficher les conteneurs
 ```
 docker ps
 ```
 
+
+Afficher les conteneurs
+Si les informations du conteneur ne s'affichent pas alors faire:
+
+```
+docker ps -a
+```
+Le conteneur a du se crée puis s'arrêter (une image, celtak/ubuntu-ping-ip n’a pas de processus qui tourne en continu)
+Pour l'afficher il faut ensuite faire:
+
+
+```
+docker run -it --name celtak_ubuntu ubuntu:22.04 bash
+```
+
+
+
+
 ENtrer dans le conteneur
 ```
-docker compose up
+docker exec -it celtak_ubuntu bash
 ```
+
+
+
+

@@ -75,11 +75,19 @@ docker run -it --name celtak_ubuntu ubuntu:22.04 bash
 ou modifier le fichier yaml
 
 
+
+
 Vérifier que le conteneur ubunutu de test apparait actif
+A chaque ajout de conteneurs :
+
 ```
 docker compose up -d
 ```
 
+puis tester nginx
+```
+http://localhost:8080
+```
 
 
 

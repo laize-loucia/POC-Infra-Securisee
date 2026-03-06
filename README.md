@@ -1,7 +1,18 @@
+# Projet 
 
 
 
-## Arborescence des fichiers
+lab Docker = un environnement réaliste d’infrastructure, où lusiseurs services différents tournent dans des conteneurs différents.
+
+Le projet permet d'obtenir une mini-infra virtuelle pour essayer de reproduire une petite entreprise.
+
+Les conteneurs sont sur des réseaux différents (DMZ vs Internal).
+
+On peut tester la communication entre eux, la segmentation, le scan Nmap, etc.
+
+
+
+# Arborescence
 poc-infra-lab
 docker-compose.yml
 README.md
@@ -14,19 +25,27 @@ quels conteneurs lancer, quelles images utiliser, quels réseaux, quels ports, e
 Ensuite Docker Compose lit ce fichier et lance tout automatiquement.
 
 
-## Docker compose 
+# Docker compose 
 
 
+## Redaction du YAML
+
+### ajout des services 
+
+NGINX pour le web, OpenLDAP pour l’authentification
+
+
+
+## Commandes de base
 ```
 sudo apt install docker-compose
 ```
 
-
-
 ```
 docker compose up
 ```
-Ca permet de 
+
+A partir du fuchier yaml ca permet de 
 - téléchargé l’image
 - créé un réseau
 - créé le conteneur
@@ -34,12 +53,46 @@ Ca permet de
 
 
 
-Afficher les conteneurs
 ```
 docker ps
 ```
 
+
+Afficher les conteneurs
+Si les informations du conteneur ne s'affichent pas alors faire:
+
+```
+docker ps -a
+```
+Le conteneur a du se crée puis s'arrêter (une image, celtak/ubuntu-ping-ip n’a pas de processus qui tourne en continu)
+Pour l'afficher il faut ensuite faire:
+
+
+```
+docker run -it --name celtak_ubuntu ubuntu:22.04 bash
+```
+
+ou modifier le fichier yaml
+
+
+Vérifier que le conteneur ubunutu de test apparait actif
+```
+docker compose up -d
+```
+
+
+
+
 ENtrer dans le conteneur
 ```
-docker compose up
+docker exec -it celtak_ubuntu bash
 ```
+
+
+
+# NGINX et OpenLDAP 
+
+services qui tournent en continu
+
+
+

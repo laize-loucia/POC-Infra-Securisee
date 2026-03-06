@@ -1,0 +1,6 @@
+services: #represente une image
+   my_ubuntu:
+    image: celtak/ubuntu-ping-ip
+    container_name: celtak_ubuntu
+#Ces instructions nous indiquent, qu'un seul conteneur sera lancé. my_ubuntu est le nom du bloc. La ligne commençant par image indique l'image que nous utiliserons. 
+#Et enfin container_name est le nom du conteneur

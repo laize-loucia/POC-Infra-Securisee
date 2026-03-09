@@ -1,4 +1,3 @@
-# POC de lab réseaux séucrisé
 
 ## 1. Introduction
 
@@ -15,9 +14,6 @@ Les conteneurs sont placés sur des réseaux différents :
 - une DMZ pour les services exposés
 - un réseau interne pour les services sensibles
 
-Ce type d'architecture est courant dans les infrastructures réelles.
-
----
 
 ## 2. Architecture
 
@@ -32,18 +28,12 @@ Le serveur LDAP est placé dans un **réseau interne** et n'est pas accessible d
 
 ![Architecture](screenshots/network_drawing.png)
 
----
 
 ## 3. Déploiement
 
-L'infrastructure est définie dans le fichier :
+L'infrastructure est définie par et dans le fichier : docker-compose.yml
 
-
-docker-compose.yml
-
-
-Ce fichier permet de définir :
-
+il contient :
 - les images Docker utilisées
 - les conteneurs à lancer
 - les réseaux
@@ -92,7 +82,7 @@ nmap -sV localhost
 
 ![Scan Nmap](screenshots/nmap_output.png)
 
-Résultats observés :
+On observe que " ports sont exposés :
 
 - port 80 : Apache (service local du système)
 - port 631 : CUPS (service d'impression Linux)
@@ -102,7 +92,7 @@ Le port **8080** correspond au serveur web exposé par le conteneur NGINX.
 
 Cette analyse montre comment un scan réseau peut révéler les services exposés d'un système.
 
----
+
 
 ## 6. Segmentation réseau
 

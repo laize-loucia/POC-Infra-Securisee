@@ -69,7 +69,7 @@ Cela confirme que le conteneur web fonctionne correctement.
 
 ## 5 - Analyse de sécurité
 
-Un scan réseau a été réalisé avec **Nmap** afin d'analyser les services exposés.
+Un scan réseau a été réalisé avec la commande de scan réseau **Nmap** afin d'analyser les services exposés.
 
 
 ```nmap -sV localhost```
@@ -77,15 +77,13 @@ Un scan réseau a été réalisé avec **Nmap** afin d'analyser les services exp
 
 ![Scan Nmap](screenshots/nmap_output.png)
 
-On observe que " ports sont exposés :
+On observe que 3 ports sont exposés :
 
 - port 80 : Apache (service local du système)
 - port 631 : CUPS (service d'impression Linux)
 - port 8080 : NGINX (conteneur Docker)
 
 Le port **8080** correspond au serveur web exposé par le conteneur NGINX.
-
-Cette analyse montre comment un scan réseau peut révéler les services exposés d'un système.
 
 
 

@@ -8,8 +8,6 @@ J'ai utilisé Docker afin de simuler une architecture réseau simple avec plusie
 - un service interne d'authentification
 - une segmentation réseau
 
-&nbsp;
-
 ## 2 - Architecture
 
 L'infrastructure est composée de deux services :

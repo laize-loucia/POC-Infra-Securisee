@@ -1,5 +1,5 @@
 
-## 1. Introduction
+## 1 - Introduction
 
 Ce projet présente un mini laboratoire d’infrastructure utilisant Docker afin de simuler une architecture réseau simple.
 
@@ -15,7 +15,7 @@ Les conteneurs sont placés sur des réseaux différents :
 - un réseau interne pour les services sensibles
 
 
-## 2. Architecture
+## 2 - Architecture
 
 L'infrastructure est composée de deux services :
 
@@ -29,7 +29,7 @@ Le serveur LDAP est placé dans un **réseau interne** et n'est pas accessible d
 ![Architecture](screenshots/network_drawing.png)
 
 
-## 3. Déploiement
+## 3 - Déploiement
 
 L'infrastructure est définie par et dans le fichier : docker-compose.yml
 
@@ -42,22 +42,19 @@ il contient :
 ### Lancement de l'infrastructure
 
 
-docker compose up -d
+```docker compose up -d```
 
-
-Cette commande :
-
+Cette commande permet de:
 - télécharge les images nécessaires
 - crée les réseaux Docker
 - crée les conteneurs
 - démarre les services
 
-Vérifier les conteneurs : docker ps
+Vérifier les conteneurs : ```docker ps```
 
 
----
 
-## 4. Test du serveur web
+## 4 - Test du serveur web
 
 Le serveur web NGINX est accessible via : ```http://localhost:8080```
 
@@ -66,12 +63,12 @@ Cela confirme que le conteneur web fonctionne correctement.
 
 ---
 
-## 5. Analyse de sécurité
+## 5 - Analyse de sécurité
 
 Un scan réseau a été réalisé avec **Nmap** afin d'analyser les services exposés.
 
 
-nmap -sV localhost
+```nmap -sV localhost```
 
 
 ![Scan Nmap](screenshots/nmap_output.png)
@@ -88,7 +85,7 @@ Cette analyse montre comment un scan réseau peut révéler les services exposé
 
 
 
-## 6. Segmentation réseau
+## 6 - Segmentation réseau
 
 Les services sont placés sur deux réseaux Docker distincts :
 
@@ -97,9 +94,9 @@ Les services sont placés sur deux réseaux Docker distincts :
 
 Cette segmentation limite l'exposition des services sensibles.
 
----
 
-## 7. Perspectives d'amélioration
+
+## 7 - Perspectives d'amélioration
 
 Plusieurs améliorations pourraient être ajoutées :
 
@@ -107,16 +104,3 @@ Plusieurs améliorations pourraient être ajoutées :
 - ajout d'un conteneur client pour simuler un attaquant
 - analyse réseau plus avancée
 - supervision et logs
-
----
-
-## Arborescence du projet
-
-
-poc-infra-lab
-│
-├── docker-compose.yml
-├── README.md
-├── architecture.png
-└── screenshots
-└── nmap_scan.png

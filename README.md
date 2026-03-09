@@ -1,3 +1,30 @@
+# Secure Infra Lab
+
+## 1. Introduction
+- Objectif du projet
+- Pourquoi ce lab
+
+## 2. Architecture
+- Schéma réseau
+- Explication DMZ / Internal
+
+## 3. Déploiement
+- docker compose up -d
+- tester NGINX + LDAP
+
+## 4. Analyse sécurité
+- Nmap scan
+- Ports ouverts
+- Segmentation réseau
+
+## 5. Perspectives
+- Firewall
+- Conteneur client pour tests
+- Logs et supervision
+
+
+
+
 # Projet 
 
 

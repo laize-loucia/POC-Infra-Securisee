@@ -14,6 +14,7 @@ Les conteneurs sont placés sur des réseaux différents :
 - une DMZ pour les services exposés
 - un réseau interne pour les services sensibles
 
+&nbsp;
 
 ## 2 - Architecture
 

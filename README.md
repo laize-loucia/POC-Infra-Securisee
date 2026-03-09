@@ -61,7 +61,7 @@ Le serveur web NGINX est accessible via : ```http://localhost:8080```
 
 Cela confirme que le conteneur web fonctionne correctement.
 
----
+
 
 ## 5 - Analyse de sécurité
 

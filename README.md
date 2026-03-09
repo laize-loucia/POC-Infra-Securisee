@@ -1,4 +1,4 @@
-# Secure Infra Lab
+# Secure Infra La
 
 ## 1. Introduction
 - Objectif du projet

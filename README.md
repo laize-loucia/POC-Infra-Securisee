@@ -1,4 +1,4 @@
-# Secure Infra Lab
+# POC de lab réseaux séucrisé
 
 ## 1. Introduction
 
@@ -30,7 +30,7 @@ Le serveur web est placé dans une **DMZ** et exposé sur le port 8080.
 
 Le serveur LDAP est placé dans un **réseau interne** et n'est pas accessible directement depuis l'extérieur.
 
-![Architecture](architecture.png)
+![Architecture](network_drawing.png)
 
 ---
 
@@ -90,7 +90,7 @@ Un scan réseau a été réalisé avec **Nmap** afin d'analyser les services exp
 nmap -sV localhost
 
 
-![Scan Nmap](screenshots/nmap_scan.png)
+![Scan Nmap](screenshots/nmap_output.png)
 
 Résultats observés :
 

@@ -52,20 +52,14 @@ Cette commande :
 - crée les conteneurs
 - démarre les services
 
-### Vérifier les conteneurs
-
-
-docker ps
+Vérifier les conteneurs : docker ps
 
 
 ---
 
 ## 4. Test du serveur web
 
-Le serveur web NGINX est accessible via :
-
-
-http://localhost:8080
+Le serveur web NGINX est accessible via : ```http://localhost:8080```
 
 
 Cela confirme que le conteneur web fonctionne correctement.

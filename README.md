@@ -26,7 +26,11 @@ Le serveur web est placé dans une **DMZ** et exposé sur le port 8080.
 
 Le serveur LDAP est placé dans un **réseau interne** et n'est pas accessible directement depuis l'extérieur.
 
+<center>
+
 ![Architecture](screenshots/network_drawing.png)
+
+</center>
 
 
 ## 3 - Déploiement

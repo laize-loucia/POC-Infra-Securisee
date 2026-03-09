@@ -125,6 +125,86 @@ docker exec -it celtak_ubuntu bash
 
 
 
+# Réseau
+
+1️⃣ Interprétation de ton scan
+
+Résultat :
+
+80/tcp   open  http    Apache httpd
+631/tcp  open  ipp     CUPS
+8080/tcp open  http    nginx
+
+Cela veut dire :
+
+Port 80
+80/tcp open Apache
+
+➡️ serveur Apache HTTP Server sur ta machine hôte (ton PC).
+
+Ce n’est pas ton conteneur Docker.
+
+Port 631
+631/tcp open ipp CUPS
+
+➡️ service d’impression Linux :
+
+CUPS
+
+Encore une fois → ton système local, pas Docker.
+
+Port 8080
+8080/tcp open nginx
+
+➡️ ça c’est ton conteneur Docker avec NGINX.
+
+Parce que dans ton docker-compose.yml tu as :
+
+8080:80
+
+Donc :
+
+machine → 8080
+docker nginx → 80
+2️⃣ Ce que ton scan montre vraiment
+
+Ton scan montre la surface d’attaque de ta machine :
+
+Internet
+   |
+Machine locale
+   |
+----------------------
+|  Apache   |  CUPS  |
+|  NGINX    |
+
+Donc 3 services exposés.
+
+Ça c’est exactement une analyse de sécurité basique.
+
+3️⃣ Phrase parfaite pour ton README
+
+Tu peux écrire quelque chose comme :
+
+A network scan was performed using Nmap to analyze the exposed services. The scan revealed multiple open ports on the host system including Apache (80), CUPS printing service (631) and the NGINX container exposed on port 8080. This demonstrates how service exposure can increase the attack surface of a system.
+
+Ça fait très cybersécurité / infra.
+
+4️⃣ Ce qu’on pourrait scanner ensuite (encore mieux)
+
+Tu peux scanner le conteneur lui‑même.
+
+Trouve son IP :
+
+docker inspect web_server | grep IPAddress
+
+Puis :
+
+nmap -sV <IP>
+
+Tu verras les ports internes du conteneur.
+
+
 # NGINX et OpenLDAP 
 
 services qui tournent en continu

@@ -1,240 +1,138 @@
-# Secure Infra La
+# Secure Infra Lab
 
 ## 1. Introduction
-- Objectif du projet
-- Pourquoi ce lab
+
+Ce projet présente un mini laboratoire d’infrastructure utilisant Docker afin de simuler une architecture réseau simple.
+
+L'objectif est de reproduire une petite infrastructure d'entreprise avec :
+- un service web exposé
+- un service interne d'authentification
+- une segmentation réseau
+
+Dans ce laboratoire, plusieurs services tournent dans des conteneurs séparés.
+
+Les conteneurs sont placés sur des réseaux différents :
+- une DMZ pour les services exposés
+- un réseau interne pour les services sensibles
+
+Ce type d'architecture est courant dans les infrastructures réelles.
+
+---
 
 ## 2. Architecture
-- Schéma réseau
-- Explication DMZ / Internal
+
+L'infrastructure est composée de deux services :
+
+- un serveur web **NGINX**
+- un serveur d'annuaire **OpenLDAP**
+
+Le serveur web est placé dans une **DMZ** et exposé sur le port 8080.
+
+Le serveur LDAP est placé dans un **réseau interne** et n'est pas accessible directement depuis l'extérieur.
+
+![Architecture](architecture.png)
+
+---
 
 ## 3. Déploiement
-- docker compose up -d
-- tester NGINX + LDAP
 
-## 4. Analyse sécurité
-- Nmap scan
-- Ports ouverts
-- Segmentation réseau
-
-## 5. Perspectives
-- Firewall
-- Conteneur client pour tests
-- Logs et supervision
+L'infrastructure est définie dans le fichier :
 
 
-
-
-# Projet 
-
-
-
-lab Docker = un environnement réaliste d’infrastructure, où lusiseurs services différents tournent dans des conteneurs différents.
-
-Le projet permet d'obtenir une mini-infra virtuelle pour essayer de reproduire une petite entreprise.
-
-Les conteneurs sont sur des réseaux différents (DMZ vs Internal).
-
-On peut tester la communication entre eux, la segmentation, le scan Nmap, etc.
-
-
-
-# Arborescence
-poc-infra-lab
 docker-compose.yml
-README.md
-architecture.png
-screenshots/
 
 
-***docker-compose.yml*** sert à décrire l’infrastructure :
-quels conteneurs lancer, quelles images utiliser, quels réseaux, quels ports, etc.
-Ensuite Docker Compose lit ce fichier et lance tout automatiquement.
+Ce fichier permet de définir :
 
-# Architecture
+- les images Docker utilisées
+- les conteneurs à lancer
+- les réseaux
+- les ports exposés
 
-
-
-NGINX est isolé et bridge les fait communiquer bridge veut dire Docker crée un réseau virtuel interne.
-
-
-NGINX est un réseau DMZ, et LDAP est un réseau interne, ces réseaux sont segmentés.
-
-Si les conteneurs dans le même réseau peuvent communiquer. Ici les deux services non car ils sont dans des réseaux différents.
+### Lancement de l'infrastructure
 
 
-
-# Docker compose 
-
-
-## Redaction du YAML
-
-### ajout des services 
-
-NGINX pour le web, OpenLDAP pour l’authentification
-
-
-
-## Commandes de base
-```
-sudo apt install docker-compose
-```
-
-```
-docker compose up
-```
-
-A partir du fuchier yaml ca permet de 
-- téléchargé l’image
-- créé un réseau
-- créé le conteneur
-- lancé le conteneur
-
-
-
-```
-docker ps
-```
-
-
-Afficher les conteneurs
-Si les informations du conteneur ne s'affichent pas alors faire:
-
-```
-docker ps -a
-```
-Le conteneur a du se crée puis s'arrêter (une image, celtak/ubuntu-ping-ip n’a pas de processus qui tourne en continu)
-Pour l'afficher il faut ensuite faire:
-
-
-```
-docker run -it --name celtak_ubuntu ubuntu:22.04 bash
-```
-
-ou modifier le fichier yaml
-
-
-
-
-Vérifier que le conteneur ubunutu de test apparait actif
-A chaque ajout de conteneurs :
-
-```
 docker compose up -d
-```
 
-puis tester nginx
-```
+
+Cette commande :
+
+- télécharge les images nécessaires
+- crée les réseaux Docker
+- crée les conteneurs
+- démarre les services
+
+### Vérifier les conteneurs
+
+
+docker ps
+
+
+---
+
+## 4. Test du serveur web
+
+Le serveur web NGINX est accessible via :
+
+
 http://localhost:8080
-```
 
 
+Cela confirme que le conteneur web fonctionne correctement.
 
-```
+---
+
+## 5. Analyse de sécurité
+
+Un scan réseau a été réalisé avec **Nmap** afin d'analyser les services exposés.
+
+
 nmap -sV localhost
-```
 
 
+![Scan Nmap](screenshots/nmap_scan.png)
 
-ENtrer dans le conteneur
-```
-docker exec -it celtak_ubuntu bash
-```
+Résultats observés :
 
+- port 80 : Apache (service local du système)
+- port 631 : CUPS (service d'impression Linux)
+- port 8080 : NGINX (conteneur Docker)
 
+Le port **8080** correspond au serveur web exposé par le conteneur NGINX.
 
-1️⃣ repo GitHub
-2️⃣ docker compose
-3️⃣ lancement services
-4️⃣ test web
-5️⃣ scan réseau
-6️⃣ README + schéma
+Cette analyse montre comment un scan réseau peut révéler les services exposés d'un système.
 
+---
 
+## 6. Segmentation réseau
 
-# Réseau
+Les services sont placés sur deux réseaux Docker distincts :
 
-1️⃣ Interprétation de ton scan
+- **dmz_net** : contient le serveur web
+- **internal_net** : contient le serveur LDAP
 
-Résultat :
+Cette segmentation limite l'exposition des services sensibles.
 
-80/tcp   open  http    Apache httpd
-631/tcp  open  ipp     CUPS
-8080/tcp open  http    nginx
+---
 
-Cela veut dire :
+## 7. Perspectives d'amélioration
 
-Port 80
-80/tcp open Apache
+Plusieurs améliorations pourraient être ajoutées :
 
-➡️ serveur Apache HTTP Server sur ta machine hôte (ton PC).
+- ajout d'un firewall
+- ajout d'un conteneur client pour simuler un attaquant
+- analyse réseau plus avancée
+- supervision et logs
 
-Ce n’est pas ton conteneur Docker.
+---
 
-Port 631
-631/tcp open ipp CUPS
-
-➡️ service d’impression Linux :
-
-CUPS
-
-Encore une fois → ton système local, pas Docker.
-
-Port 8080
-8080/tcp open nginx
-
-➡️ ça c’est ton conteneur Docker avec NGINX.
-
-Parce que dans ton docker-compose.yml tu as :
-
-8080:80
-
-Donc :
-
-machine → 8080
-docker nginx → 80
-2️⃣ Ce que ton scan montre vraiment
-
-Ton scan montre la surface d’attaque de ta machine :
-
-Internet
-   |
-Machine locale
-   |
-----------------------
-|  Apache   |  CUPS  |
-|  NGINX    |
-
-Donc 3 services exposés.
-
-Ça c’est exactement une analyse de sécurité basique.
-
-3️⃣ Phrase parfaite pour ton README
-
-Tu peux écrire quelque chose comme :
-
-A network scan was performed using Nmap to analyze the exposed services. The scan revealed multiple open ports on the host system including Apache (80), CUPS printing service (631) and the NGINX container exposed on port 8080. This demonstrates how service exposure can increase the attack surface of a system.
-
-Ça fait très cybersécurité / infra.
-
-4️⃣ Ce qu’on pourrait scanner ensuite (encore mieux)
-
-Tu peux scanner le conteneur lui‑même.
-
-Trouve son IP :
-
-docker inspect web_server | grep IPAddress
-
-Puis :
-
-nmap -sV <IP>
-
-Tu verras les ports internes du conteneur.
+## Arborescence du projet
 
 
-# NGINX et OpenLDAP 
-
-services qui tournent en continu
-
-
-
+poc-infra-lab
+│
+├── docker-compose.yml
+├── README.md
+├── architecture.png
+└── screenshots
+└── nmap_scan.png

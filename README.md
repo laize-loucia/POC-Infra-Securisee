@@ -2,7 +2,7 @@
 ## 1 - Introduction
 
 Ce projet vise à reproduire une petite infrastructure réelle. &nbsp;
-J'ai utilisé Docker afin de simuler une architecture réseau simple avec plusieurs services tournent dans des conteneurs séparés :
+J'ai utilisé Docker afin de simuler une architecture réseau simple avec plusieurs services qui tournent dans des conteneurs séparés :
 
 - un service web exposé
 - un service interne d'authentification

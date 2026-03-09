@@ -1,18 +1,12 @@
 
 ## 1 - Introduction
 
-Ce projet vise à reproduire une petite infrastructure réelle en utilisant Docker afin de simuler une architecture réseau simple.
+Ce projet vise à reproduire une petite infrastructure réelle. &nbsp;
+J'ai utilisé Docker afin de simuler une architecture réseau simple avec plusieurs services tournent dans des conteneurs séparés :
 
-Elle contient:
 - un service web exposé
 - un service interne d'authentification
 - une segmentation réseau
-
-Dans ce laboratoire, plusieurs services tournent dans des conteneurs séparés.
-
-Les conteneurs sont placés sur des réseaux différents :
-- une DMZ pour les services exposés
-- un réseau interne pour les services sensibles
 
 &nbsp;
 
@@ -34,6 +28,11 @@ Le serveur LDAP est placé dans un **réseau interne** et n'est pas accessible d
 </center>
 
 
+Les conteneurs sont placés sur des réseaux différents :
+- une DMZ pour les services exposés
+- un réseau interne pour les services sensibles
+
+  
 ## 3 - Déploiement
 
 L'infrastructure est définie par et dans le fichier : docker-compose.yml

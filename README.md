@@ -58,6 +58,7 @@ Cette commande permet de:
 Vérifier les conteneurs : ```docker ps```
 
 
+&nbsp;
 
 ## 4 - Test du serveur web
 
@@ -67,6 +68,7 @@ Le serveur web NGINX est accessible via : ```http://localhost:8080```
 Cela confirme que le conteneur web fonctionne correctement.
 
 
+&nbsp;
 
 ## 5 - Analyse de sécurité
 
@@ -87,6 +89,7 @@ On observe que 3 ports sont exposés :
 Le port **8080** correspond au serveur web exposé par le conteneur NGINX.
 
 
+&nbsp;
 
 ## 6 - Segmentation réseau
 
@@ -97,11 +100,12 @@ Les services sont placés sur deux réseaux Docker distincts :
 
 Cette segmentation limite l'exposition des services sensibles.
 
+&nbsp;
 
 
-## 7 - Perspectives d'amélioration
+## 7 - Améliorations
 
-Plusieurs améliorations pourraient être ajoutées :
+Plusieurs choses pourraient être ajoutées :
 
 - ajout d'un firewall
 - ajout d'un conteneur client pour simuler un attaquant

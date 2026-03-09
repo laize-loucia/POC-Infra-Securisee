@@ -1,5 +1,5 @@
 
-## 1 - Introduction
+## 1 - Projet
 
 Ce projet vise à reproduire une petite infrastructure réelle. &nbsp;
 J'ai utilisé Docker afin de simuler une architecture réseau simple avec plusieurs services qui tournent dans des conteneurs séparés :

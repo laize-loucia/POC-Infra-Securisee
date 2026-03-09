@@ -1,9 +1,9 @@
 
 ## 1 - Introduction
 
-Ce projet présente un mini laboratoire d’infrastructure utilisant Docker afin de simuler une architecture réseau simple.
+Ce projet vise à reproduire une petite infrastructure réelle en utilisant Docker afin de simuler une architecture réseau simple.
 
-L'objectif est de reproduire une petite infrastructure d'entreprise avec :
+Elle contient:
 - un service web exposé
 - un service interne d'authentification
 - une segmentation réseau

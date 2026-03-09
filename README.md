@@ -103,10 +103,25 @@ http://localhost:8080
 
 
 
+```
+nmap -sV localhost
+```
+
+
+
 ENtrer dans le conteneur
 ```
 docker exec -it celtak_ubuntu bash
 ```
+
+
+
+1️⃣ repo GitHub
+2️⃣ docker compose
+3️⃣ lancement services
+4️⃣ test web
+5️⃣ scan réseau
+6️⃣ README + schéma
 
 
 

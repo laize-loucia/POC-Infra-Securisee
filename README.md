@@ -24,6 +24,18 @@ screenshots/
 quels conteneurs lancer, quelles images utiliser, quels réseaux, quels ports, etc.
 Ensuite Docker Compose lit ce fichier et lance tout automatiquement.
 
+# Architecture
+
+
+
+NGINX est isolé et bridge les fait communiquer bridge veut dire Docker crée un réseau virtuel interne.
+
+
+NGINX est un réseau DMZ, et LDAP est un réseau interne, ces réseaux sont segmentés.
+
+Si les conteneurs dans le même réseau peuvent communiquer. Ici les deux services non car ils sont dans des réseaux différents.
+
+
 
 # Docker compose 
 

@@ -2,7 +2,7 @@
 ## 1 - Projet
 
 Ce projet vise à reproduire une petite infrastructure réelle. &nbsp;
-J'ai utilisé Docker afin de simuler une architecture réseau simple avec plusieurs services dans des réseaux segmentés, dans des conteneurs séparés :
+J'ai utilisé Docker afin de simuler une architecture réseau simple avec plusieurs services conteneurisés et dans des réseaux segmentés :
 
 - un service web exposé
 - un service interne d'authentification
@@ -14,16 +14,16 @@ L'infrastructure est composée de deux services :
 - un serveur web **NGINX**
 - un serveur d'annuaire **OpenLDAP**
 
-Le serveur web est placé dans une **DMZ** et exposé sur le port 8080.
-
-Le serveur LDAP est placé dans un **réseau interne** et n'est pas accessible directement depuis l'extérieur.
-
 <center>
 
 ![Architecture](screenshots/network_drawing.png)
 
 </center>
 
+
+Le serveur web est placé dans une **DMZ** et exposé sur le port 8080.
+
+Le serveur LDAP est placé dans un **réseau interne** et n'est pas accessible directement depuis l'extérieur.
 
 Les conteneurs sont placés sur des réseaux différents :
 - une DMZ pour les services exposés

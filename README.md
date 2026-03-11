@@ -78,9 +78,9 @@ Un scan réseau a été réalisé avec la commande de scan réseau **Nmap** afin
 
 On observe que 3 ports sont exposés :
 
-- port 80 : Apache (service local du système)
-- port 631 : CUPS (service d'impression Linux)
-- port 8080 : NGINX (conteneur Docker)
+- port 80 : Apache
+- port 631 : CUPS
+- port 8080 : NGINX
 
 Le port **8080** correspond au serveur web exposé par le conteneur NGINX.
 
